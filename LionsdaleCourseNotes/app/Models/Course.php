@@ -12,10 +12,10 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 class Course extends Model
 {
     use HasFactory;
-    public function users():HasMany{
-        return $this->hasMany(CourseUserTable::class);
+    public function users():BelongsToMany{
+        return $this->belongsToMany(User::class, 'course_user_tables')->withPivot('completed','seen');
     }
-    public function type():HasOne{
-        return $this->hasOne(Type::class);
+    public function type():BelongsTo{
+        return $this->belongsTo(Type::class);
     }
 }

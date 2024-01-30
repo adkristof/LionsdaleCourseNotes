@@ -50,7 +50,7 @@ class User extends Authenticatable
     {
         return $this->belongsTo(School::class);
     }
-    public function courses(): HasMany{
-        return $this->hasMany(CourseUserTable::class);
+    public function courses():BelongsToMany{
+        return $this->belongsToMany(Course::class, 'course_user_tables')->withPivot('completed','seen');
     }
 }

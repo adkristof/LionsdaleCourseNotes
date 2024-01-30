@@ -13,15 +13,17 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $this->call([SchoolSeeder::class]);
-        $this->call([TypeSeeder::class]);
+        $this->call([
+            SchoolSeeder::class,
+            TypeSeeder::class,
+            CourseSeeder::class
+        ]);
          \App\Models\User::factory(30)->create();
 
          \App\Models\User::factory()->create([
              'name' => 'Test User',
              'email' => 'test@example.com',
          ]);
-         $this->call([CourseSeeder::class]);
          $this->call([CourseUserTableSeeder::class]);
     }
 }
