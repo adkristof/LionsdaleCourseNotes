@@ -16,11 +16,22 @@ class CourseUserTableFactory extends Factory
      */
     public function definition(): array
     {
-        return [
-            'seen'=>fake()->boolean(),
-            'completed'=>fake()->boolean(),
-            'user_id'=>fake()->numberBetween(1,31),
-            'course_id'=>fake()->numberBetween(1,6),
-        ];
+        $seen=fake()->boolean();
+        if($seen){
+            return [
+                'seen'=>$seen,
+                'completed'=>fake()->boolean(),
+                'user_id'=>fake()->numberBetween(1,31),
+                'course_id'=>fake()->numberBetween(1,6),
+            ];
+        }
+        else {
+            return[
+                'seen'=>$seen,
+                'completed'=>false,
+                'user_id'=>fake()->numberBetween(1,31),
+                'course_id'=>fake()->numberBetween(1,6),
+            ];
+        }
     }
 }

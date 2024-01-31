@@ -20,6 +20,9 @@
                         <div class="card-body">
                            <p class="card-text text-truncate">{{ $item->level }}</p>
                         </div>
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-warning">Join</button>
+                        </div>
                      </div>
                  </div>
              </div>
