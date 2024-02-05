@@ -31,17 +31,22 @@
                                     @endfor
                                     <td>{{$count}}</td>
                                     <td>
+                                        @can('view', \App\Models\Course::class)
                                         <div class="row w-40">
                                             <div class="col">
                                                 <form action="{{ route('courses.show', $courses[$i]) }}" method="GET">
                                                     <button type="submit" class="btn btn-primary">Show</button>
                                                 </form>
                                             </div>
+                                        @endcan
+                                            @can('update', \App\Models\Course::class)
                                             <div class="col">
                                                 <form action="{{ route('courses.edit', $courses[$i]) }}" method="GET">
                                                     <button type="submit" class="btn btn-warning">Edit</button>
                                                 </form>
-                                            </div>
+                                            </div>    
+                                            @endcan
+                                            @can('delete', \App\Models\Course::class)
                                             <div class="col">
                                                 <form action="{{ route('courses.destroy', $courses[$i]) }}" method="POST">
                                                     @csrf
@@ -49,6 +54,7 @@
                                                     <button type="submit" class="btn btn-danger">Delete</button>
                                                 </form>
                                             </div>
+                                            @endcan
                                         </div>
                                     </td>
                                 </tr>

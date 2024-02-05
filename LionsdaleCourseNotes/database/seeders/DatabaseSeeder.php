@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
+            RoleSeeder::class,
             SchoolSeeder::class,
             TypeSeeder::class,
             CourseSeeder::class
@@ -23,6 +24,7 @@ class DatabaseSeeder extends Seeder
          \App\Models\User::factory()->create([
              'name' => 'Test User',
              'email' => 'test@example.com',
+             'role_id' => '1',
          ]);
          $this->call([CourseUserTableSeeder::class]);
     }

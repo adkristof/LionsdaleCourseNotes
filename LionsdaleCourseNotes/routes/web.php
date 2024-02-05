@@ -23,3 +23,5 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resource('/courses',CourseController::class);
+Route::get('/courses_deleted', [CourseController::class, 'show_deleted'])->name('courses.show_deleted');
+Route::put('/courses/restore/{course}', [CourseController::class, 'restore'])->name('courses.restore')->withTrashed();

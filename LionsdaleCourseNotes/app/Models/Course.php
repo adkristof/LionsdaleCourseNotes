@@ -14,6 +14,12 @@ class Course extends Model
 {
     use HasFactory;
     use SoftDeletes;
+
+    protected $fillable=[
+        'name',
+        'level',
+        'type_id',
+    ];
     public function users():BelongsToMany{
         return $this->belongsToMany(User::class, 'course_user_tables')->withPivot('completed','seen');
     }

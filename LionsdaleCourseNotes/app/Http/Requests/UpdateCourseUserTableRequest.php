@@ -22,7 +22,7 @@ class UpdateCourseUserTableRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            
         ];
     }
 }

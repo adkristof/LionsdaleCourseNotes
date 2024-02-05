@@ -25,8 +25,11 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'fullname',
         'email',
         'password',
+        'active',
+        'school_id',
     ];
 
     /**
@@ -55,4 +58,8 @@ class User extends Authenticatable
     public function courses():BelongsToMany{
         return $this->belongsToMany(Course::class, 'course_user_tables')->withPivot('completed','seen');
     }
+    public function role(): BelongsTo {
+        return $this->belongsTo(Role::class);
+    }
+
 }
