@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\CourseUserTable;
 use App\Http\Requests\StoreCourseRequest;
 use App\Http\Requests\UpdateCourseRequest;
 
@@ -14,7 +15,8 @@ class CourseController extends Controller
     public function index()
     {
         $courses = Course::all();
-        return view('Courses.index',['courses'=>$courses]);
+        $courseusers = CourseUserTable::all();
+        return view('Courses.index',['courses'=>$courses,'courseusers'=>$courseusers]);
     }
 
     /**
@@ -64,7 +66,7 @@ class CourseController extends Controller
      */
     public function update(UpdateCourseRequest $request, Course $course)
     {
-        $this->authorize('update', Course::class);
+        $this->authorize('update', Course::class); 
         $course->update($request->all());
         return redirect()->route('courses.index')->with('message', 'Course Updated Successfully');
     }

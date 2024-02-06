@@ -40,7 +40,7 @@ class CourseUserTableController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(CourseUserTable $courseUserTable)
+    public function show(CourseUserTable $courseuser)
     {
         //
     }
@@ -48,25 +48,28 @@ class CourseUserTableController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(CourseUserTable $courseUserTable)
+    public function edit(CourseUserTable $courseuser)
     {
-        //
+        $this->authorize('update', Course::class);
+
+        return view('courseuser.edit',['courseuser'=> $courseuser]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCourseUserTableRequest $request, CourseUserTable $courseUserTable)
+    public function update(UpdateCourseUserTableRequest $request, CourseUserTable $courseuser)
     {
         $this->authorize('update', Course::class);
-        $courseUserTable->update($request->all());
+
+        $courseuser->update($request->all());
         return redirect()->route('courses.index')->with('message', 'Successfully completed the course');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(CourseUserTable $courseUserTable)
+    public function destroy(CourseUserTable $courseuser)
     {
         //
     }

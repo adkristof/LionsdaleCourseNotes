@@ -33,45 +33,62 @@
                                     <td>
                                         @can('view', \App\Models\Course::class)
                                         <div class="row w-40">
-                                                <div class="col">
+                                            <div class="col">
                                                 <form action="{{ route('courses.show', $courses[$i]) }}" method="GET">
                                                     <button type="submit" class="btn btn-primary">Show</button>
                                                 </form>
                                             </div>
-                                            @for ($j = 0; $j < count($courses[$i]->users); $j++)
-                                            
-                                                
-                                            @if (Auth::user()->id==$courses[$i]->users[$j]->id)
-                                            @if($courses[$i]->users[$j]->pivot->seen ==0)
-                                                <div class="col">
-                                                    <?php
-                                                        $courseuser = $courses[$i]->users[$j]->pivot
-                                                    ?>
-                                                <form action="{{ route('courseuser.update', $courseuser ) }}" method="POST"
-                                                enctype="multipart/form-data">
-                                                @csrf
-                                                @method('PUT')
-                                                <input type="hidden" name="seen" id="seen" value="1">
-                                                <input type="hidden" name="completed" id="completed" value="0">
-                                                <button type="submit" class="btn btn-success">Join</button>
-                                                </form>
-                                                </div>
-                                            
-                                                @elseif ($courses[$i]->users[$j]->pivot->seen ==1) 
-                                                    @else
-                                                    <form action="{{ route('courseuser.store') }}" method="POST"
+                                            <div class="col">
+                                                <?php $was=false;?>
+                                                @for ($j = 0; $j < count(Auth::user()->courses); $j++)
+                                                <?php $asd=Auth::user();?>
+                                                @if ($asd->courses[$j]->id ==$courses[$i]->id)
+                                                    @if($asd->courses[$j]->pivot->seen == 0 && $was==false)
+                                                        @for ($a=0; $a < count($courses[$i]->users) ; $a++)
+                                                            <?php
+                                                                $courseuser1 = $courses[$i]->users[$a]->pivot; 
+                                                            ?>
+                                                        @endfor
+                                                            @for ($a=0; $a < count($courseusers) ; $a++)  
+                                                                @if($courseusers[$a]->user_id ==$courseuser1->user_id && $courseusers[$a]->course_id ==$courseuser1->course_id &&$was==false)
+                                                                <?php $was=true;?> 
+                                                                
+                                                                <form action="{{ route('courseuser.update', $courseusers[$a]) }}" method="POST"
+                                                                   enctype="multipart/form-data">
+                                                                   @csrf
+                                                                   @method('PUT')
+                                                                   <input type="hidden" name="seen" id="seen" value="1">
+                                                                   <input type="hidden" name="completed" id="completed" value="0">
+                                                                   <button type="submit" class="btn btn-success">Join</button>
+                                                                   </form> 
+                                                                @endif
+                                                                @endfor
+                                                                
+                                                        
+                                                             
+                                                        
+                                                        @elseif($asd->courses[$j]->pivot->seen == 1 && $was==false)
+                                                        @endif
+                                                        <?php $was=true?>
+                                                            @endif
+                                                        
+                                            @endfor
+                                            @if ($was)
+                                            @else  
+                                            <form action="{{ route('courseuser.store') }}" method="POST"
                                                         enctype="multipart/form-data">
                                                         @csrf
                                                         <input type="hidden" name="completed" id="completed" value="0">
                                                         <input type="hidden" name="user_id" id="user_id" value="{{Auth::user()->id}}">
                                                         <input type="hidden" name="course_id" id="course_id" value="{{$courses[$i]->id}}">
                                                         <button type="submit" class="btn btn-success">Join</button>
-                                                        </form>
-                                                        </div>
+                                                        </form>  
                                             @endif
-                                                @endif
-                                                @endfor
+                                                
+                                                
+                                            </div>
                                                 @endcan
+                                        
                                                 @can('update', \App\Models\Course::class)
                                                 <div class="col">
                                                     <form action="{{ route('courses.edit', $courses[$i]) }}" method="GET">
@@ -88,7 +105,6 @@
                                                     </form>
                                                 </div>
                                                 @endcan
-                                        </div>
                                     </td>
                                 </tr>
                             @endfor
