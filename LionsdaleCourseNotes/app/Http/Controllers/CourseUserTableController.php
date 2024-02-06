@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use App\Models\CourseUserTable;
 use App\Http\Requests\StoreCourseUserTableRequest;
 use App\Http\Requests\UpdateCourseUserTableRequest;
@@ -21,7 +22,7 @@ class CourseUserTableController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -29,7 +30,11 @@ class CourseUserTableController extends Controller
      */
     public function store(StoreCourseUserTableRequest $request)
     {
-        //
+        $this->authorize('view', Course::class);
+        $courseuser = CourseUserTable::create($request->all());
+        $courseuser->save();
+
+        return redirect()->route('courses.index')->with('message', 'Successfully joined to a course.');
     }
 
     /**
@@ -53,7 +58,9 @@ class CourseUserTableController extends Controller
      */
     public function update(UpdateCourseUserTableRequest $request, CourseUserTable $courseUserTable)
     {
-        //
+        $this->authorize('update', Course::class);
+        $courseUserTable->update($request->all());
+        return redirect()->route('courses.index')->with('message', 'Successfully completed the course');
     }
 
     /**

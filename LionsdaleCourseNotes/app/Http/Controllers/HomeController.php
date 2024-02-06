@@ -23,6 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        toastr()->success('You have loged in!', 'Congrats');
         return view('home');
     }
 }

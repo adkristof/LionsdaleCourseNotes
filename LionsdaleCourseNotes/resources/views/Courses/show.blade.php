@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="container">
     <div class="row">
         <div class="col">
             <h1 class="text-white">Detail</h1>
@@ -10,9 +11,10 @@
                     <h4 class="card-title">{{ $course->name }}</h4>
                     <p class="card-text">{{ fake()->sentences(3, true) }}</p>
                     <hr>
-                    <p class="card-text">{{ fake()->paragraphs(23, true) }}</p>
+                    <p class="card-text">{{ fake()->paragraphs(10, true) }}</p>
                 </div>
             </div>
         </div>
     </div>
-    @endsection
+</div>
+@endsection

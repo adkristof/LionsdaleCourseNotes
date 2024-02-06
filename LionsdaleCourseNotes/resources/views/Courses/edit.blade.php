@@ -47,18 +47,22 @@
                                 <input type="text" name="name" id="name"
                                     class="form-control @if ($errors->has('name')) is-invalid @endif"
                                     value="{{ old('name', $course->name) }}">
+                                    <input type="hidden" name="c_route" id="c_route"
+                                        class="form-control" value="{{old('name',$course->name .'.php')}}">
                                 @error('name')
                                     <small class="text-danger">*{{ $message }}</small>
                                 @enderror
                             </div>
                             <div class="mb-3">
                                 <label for="level" class="form-label">Course Level</label>
-                                <input type="text" name="level" id="level"
-                                    class="form-control @if ($errors->has('level')) is-invalid @endif"
-                                    value="{{ old('level', $course->level) }}">
-                                @error('start')
-                                    <small class="text-danger">*{{ $message }}</small>
-                                @enderror
+                                <select name="level" class="form-control" id="level" data-live-search="true">
+                                    
+                                    <option value="beginner">Beginner</option>
+                                    <option value="intermediete">Intermediete</option>
+                                    <option value="professional">Professional</option>
+                                    
+                                </select>
+                                
                             </div>
                             <div class="mb-3">
                                 <label for="type_id" class="form-label">Course Type</label>
@@ -81,4 +85,11 @@
     </div>
     <div class="col-2"></div>
 </div>
+<script>
+
+$('#name').keyup(function(){
+    $('#c_route').val($(this).val()+'.php');
+});
+
+</script>
 @endsection

@@ -11,7 +11,7 @@ class StoreCourseUserTableRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,9 @@ class StoreCourseUserTableRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'completed' => 'required|integer',
+            'user_id' => 'required|integer|gt:0',
+            'course_id' => 'required|integer|gt:0',
         ];
     }
 }

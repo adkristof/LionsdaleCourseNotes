@@ -5,9 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     {{-- JQUERY CDN --}}
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   
     <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
+
+    {{-- Jquery --}}
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+        crossorigin="anonymous"></script>
+
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -60,11 +65,12 @@
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{route('courses.index')}}">Courses</a>
+                                    <a class="dropdown-item" href="{{route('courses.mycourses')}}">MyCourses</a>
                                     @can('create', \App\Models\Course::class)
-                                       {{--  <a class="dropdown-item" href="{{ route('courses.create') }}">Events Create</a> --}}
+                                         <a class="dropdown-item" href="{{ route('courses.create') }}">Create Course</a> 
                                     @endcan
                                     @can('restore', \App\Models\Course::class)
-                                        <a class="dropdown-item" href="{{ route('courses.show_deleted') }}">Courses Deleted</a>
+                                        <a class="dropdown-item" href="{{ route('courses.show_deleted') }}">Deleted Courses</a>
                                     @endcan
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

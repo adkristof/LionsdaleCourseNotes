@@ -9,4 +9,10 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class CourseUserTable extends Model
 {
     use HasFactory;
+    protected $fillable=[
+        'seen',
+        'completed',
+        'user_id',
+        'course_id'
+    ];
 }

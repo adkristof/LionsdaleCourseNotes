@@ -19,6 +19,7 @@ class Course extends Model
         'name',
         'level',
         'type_id',
+        'c_route',
     ];
     public function users():BelongsToMany{
         return $this->belongsToMany(User::class, 'course_user_tables')->withPivot('completed','seen');

@@ -11,7 +11,7 @@ class UpdateCourseUserTableRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,8 @@ class UpdateCourseUserTableRequest extends FormRequest
     public function rules(): array
     {
         return [
-            
+            'seen'=>'required|integer',
+            'completed' => 'required|integer',
         ];
     }
 }

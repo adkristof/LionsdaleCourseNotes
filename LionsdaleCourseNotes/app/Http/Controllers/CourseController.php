@@ -22,7 +22,9 @@ class CourseController extends Controller
      */
     public function create()
     {
-        //
+        $this->authorize('create', Course::class);
+
+        return view('courses.create');
     }
 
     /**
@@ -30,7 +32,11 @@ class CourseController extends Controller
      */
     public function store(StoreCourseRequest $request)
     {
-        //
+        $this->authorize('create', Course::class);
+        $course = Course::create($request->all());
+        $course->save();
+
+        return back()->with('message', 'Course created successfully.');
     }
 
     /**
@@ -88,5 +94,11 @@ class CourseController extends Controller
 
         $course->restore();
         return back()->with('message', 'Event was restored successfully.');
+    }
+    public function myindex(Course $courses)
+    {
+        $this->authorize('restore', Course::class);
+
+        return view('Courses.mycourses',['courses'=>$courses]);
     }
 }

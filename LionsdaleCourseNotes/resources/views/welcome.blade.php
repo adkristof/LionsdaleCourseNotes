@@ -28,7 +28,7 @@ $courses = \App\Models\Course::all()
               </div>
           @endfor
           <form action="{{ route('courses.index') }}" method="GET">
-            <button type="submit" class="btn btn-primary">View more</button>
+            <button type="submit" class="btn btn-primary">View all</button>
         </form>
        </div>
     </div>

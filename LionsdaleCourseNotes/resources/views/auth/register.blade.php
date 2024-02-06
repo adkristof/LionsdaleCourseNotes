@@ -15,8 +15,8 @@
                             <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
+                                <input onchange="getSuggestion(this.value);" id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                <small class="text-info d-none" id="responseTextHolder">Suggestion: <span id="responseText"></span></small>
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -102,4 +102,26 @@
         </div>
     </div>
 </div>
+
+<script>
+    function getSuggestion(inputData) {
+        $.ajax({
+            type: 'POST',
+            url: '/retrieveSuggestion',
+            data: {
+                '_token' : '<?php echo csrf_token() ?>',
+                'inputValue' : inputData
+            },
+            success: function(data) {
+                
+                /* if (data.msg == 'No suggestion') {
+                    alert('Well too bad!');
+                } */
+                $('#responseTextHolder').removeClass('d-none');
+                $('#responseText').html(data.msg);
+            }
+        });
+    }
+</script>
+
 @endsection

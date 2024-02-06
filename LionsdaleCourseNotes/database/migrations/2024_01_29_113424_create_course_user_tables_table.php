@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('course_user_tables', function (Blueprint $table) {
-            $table->boolean('seen');
+            $table->boolean('seen')->default(true);
             $table->boolean('completed');
             $table->timestamps();
         });

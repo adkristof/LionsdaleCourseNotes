@@ -14,5 +14,23 @@ class CourseUserTableSeeder extends Seeder
     public function run(): void
     {
         CourseUserTable::factory(30)->create();
+        CourseUserTable::create([
+                'seen'=>true,
+                'completed'=>false,
+                'user_id'=>31,
+                'course_id'=>1,
+        ]);
+        CourseUserTable::create([
+            'seen'=>true,
+            'completed'=>true,
+            'user_id'=>31,
+            'course_id'=>2,
+        ]);
+        CourseUserTable::create([
+            'seen'=>false,
+            'completed'=>false,
+            'user_id'=>31,
+            'course_id'=>3,
+        ]);
     }
 }
