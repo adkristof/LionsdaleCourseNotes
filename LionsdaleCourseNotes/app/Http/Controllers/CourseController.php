@@ -99,7 +99,7 @@ class CourseController extends Controller
     }
     public function myindex(Course $courses)
     {
-        $this->authorize('restore', Course::class);
+        $this->authorize('view', Course::class);
 
         return view('Courses.mycourses',['courses'=>$courses]);
     }
