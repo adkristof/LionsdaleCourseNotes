@@ -73,4 +73,8 @@ class CourseUserTableController extends Controller
     {
         //
     }
+
+    public function quiz(Course $course) {
+        return view('courses.quiz',['course'=>$course]);
+    }
 }

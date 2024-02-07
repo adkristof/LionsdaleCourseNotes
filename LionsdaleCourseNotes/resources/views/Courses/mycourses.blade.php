@@ -29,7 +29,12 @@
                                     @if ($currentuser->courses[$i]->pivot->completed==1)
                                     Completed
                                     @else
-                                    Not completed
+                                    <div class="col">
+                                        
+                                        <form action="{{ route('courses.quiz', $courses[$i]) }}" method="GET">
+                                            <button type="submit" class="btn btn-warning">Do Quizzes</button>
+                                        </form>
+                                    </div> 
                                     @endif
 
                                 </td>

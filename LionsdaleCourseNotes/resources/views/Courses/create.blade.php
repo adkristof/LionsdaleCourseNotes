@@ -88,7 +88,7 @@
                     <script>
 
                         $('#name').keyup(function(){
-                            $('#c_route').val($(this).val()+'.php');
+                            $('#c_route').val('php.'+$(this).val());
                         });
                         
                         </script>

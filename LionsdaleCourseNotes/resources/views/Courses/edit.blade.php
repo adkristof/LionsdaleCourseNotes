@@ -48,7 +48,7 @@
                                     class="form-control @if ($errors->has('name')) is-invalid @endif"
                                     value="{{ old('name', $course->name) }}">
                                     <input type="hidden" name="c_route" id="c_route"
-                                        class="form-control" value="{{old('name',$course->name .'.php')}}">
+                                        class="form-control" value="{{old('name','php.'.$course->name)}}">
                                 @error('name')
                                     <small class="text-danger">*{{ $message }}</small>
                                 @enderror
@@ -88,7 +88,7 @@
 <script>
 
 $('#name').keyup(function(){
-    $('#c_route').val($(this).val()+'.php');
+    $('#c_route').val('php.'+$(this).val());
 });
 
 </script>

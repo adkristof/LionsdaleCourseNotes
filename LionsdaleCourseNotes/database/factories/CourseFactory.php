@@ -22,7 +22,7 @@ class CourseFactory extends Factory
         return [
             'name'=>$name,
             'level'=>$levels[$random],
-            'c_route'=> $name.'.php',
+            'c_route'=> 'php.'.$name,
             'type_id'=>fake()->numberBetween(1,3)
 
         ];
