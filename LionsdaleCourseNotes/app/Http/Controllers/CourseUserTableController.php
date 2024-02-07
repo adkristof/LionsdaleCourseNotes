@@ -60,7 +60,7 @@ class CourseUserTableController extends Controller
      */
     public function update(UpdateCourseUserTableRequest $request, CourseUserTable $courseuser)
     {
-        $this->authorize('update', Course::class);
+        $this->authorize('view', Course::class);
         
             $courseuser->update($request->all());
             if ($courseuser->completed==0) {
