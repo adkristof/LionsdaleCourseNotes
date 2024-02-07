@@ -11,7 +11,7 @@ class UpdateSchoolRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,10 @@ class UpdateSchoolRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required|min:5|max:255|unique:courses,name,'.$this->school->id,
+            'address' => 'required|string',
+            'contactName' => 'required|string',
+            'contactEmail' => 'required|string|email',
         ];
     }
 }

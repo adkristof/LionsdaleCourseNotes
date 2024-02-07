@@ -40,7 +40,7 @@
                     @endif
                     <div class="row">
                         <div class="col">
-                            <form action="{{ route('courses.store') }}" method="POST"
+                            <form action="{{ route('schools.store') }}" method="POST"
                                 enctype="multipart/form-data">
                                 @csrf
                                 <div class="mb-3">
@@ -48,30 +48,36 @@
                                     <input type="text" name="name" id="name"
                                         class="form-control @if ($errors->has('name')) is-invalid @endif"
                                         value="{{ old('name') }}">
-                                        <input type="hidden" name="c_route" id="c_route"
-                                        class="form-control">
-                                    @error('c_route')
+                                    @error('name')
                                         <small class="text-danger">*{{ $message }}</small>
                                     @enderror
                                 </div>
                                 <div class="mb-3">
-                                    <label for="level" class="form-label">Course Level</label>
-                                    <select name="level" class="form-control" id="level" data-live-search="true">
-                                    
-                                        <option value="beginner">Beginner</option>
-                                        <option value="intermediete">Intermediete</option>
-                                        <option value="professional">Professional</option>
-                                        
-                                    </select>
+                                    <label for="address" class="form-label">Address</label>
+                                    <input type="text" name="address" id="address"
+                                        class="form-control @if ($errors->has('address')) is-invalid @endif"
+                                        value="{{ old('address') }}">
+                                    @error('address')
+                                        <small class="text-danger">*{{ $message }}</small>
+                                    @enderror
                                 </div>
                                 <div class="mb-3">
-                                    <label for="type_id" class="form-label">Course Type</label>
-                                    <select name="type_id" class="form-control" id="type_id" data-live-search="true">
-                                        @foreach(\App\Models\Type::all() as $type)
-                                        <option value="{{$type->id}}">{{$type->type}}</option>
-                                        @endforeach
-                                    </select>
-                            
+                                    <label for="contactName" class="form-label">Contact Name</label>
+                                    <input type="text" name="contactName" id="contactName"
+                                        class="form-control @if ($errors->has('contactName')) is-invalid @endif"
+                                        value="{{ old('contactName') }}">
+                                    @error('contactName')
+                                        <small class="text-danger">*{{ $message }}</small>
+                                    @enderror
+                                </div>
+                                <div class="mb-3">
+                                    <label for="contactEmail" class="form-label">Contact Email</label>
+                                    <input type="text" name="contactEmail" id="contactEmail"
+                                        class="form-control @if ($errors->has('contactEmail')) is-invalid @endif"
+                                        value="{{ old('contactEmail') }}">
+                                    @error('contactEmail')
+                                        <small class="text-danger">*{{ $message }}</small>
+                                    @enderror
                                 </div>
 
                                 <div class="mb-3 text-center">
@@ -81,11 +87,4 @@
                             </form>
                         </div>
                     </div>
-                    <script>
-
-                        $('#name').keyup(function(){
-                            $('#c_route').val('php.'+$(this).val());
-                        });
-                        
-                        </script>
 @endsection

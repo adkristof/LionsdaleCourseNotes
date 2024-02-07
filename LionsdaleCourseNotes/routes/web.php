@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\CourseUserTableController;
+use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -31,6 +32,11 @@ Route::get('/mycourses', [CourseController::class, 'myindex'])->name('courses.my
 Route::get('/quiz/{course}', [CourseUserTableController::class,'quiz'])->name('courses.quiz');
 
 Route::resource('/courseuser',CourseUserTableController::class);
+
+Route::resource('/schools',SchoolController::class);
+Route::get('/schools_deleted', [SchoolController::class, 'show_deleted'])->name('schools.show_deleted');
+Route::get('/schools', [SchoolController::class, 'index'])->name('schools.index');
+Route::put('/schools/restore/{school}', [SchoolController::class, 'restore'])->name('schools.restore')->withTrashed();
 
 //AJAX RESPONSE
 Route::post('/retrieveSuggestion', [UserController::class, 'retrieveSuggestion'])->name('RetrieveSuggestion');

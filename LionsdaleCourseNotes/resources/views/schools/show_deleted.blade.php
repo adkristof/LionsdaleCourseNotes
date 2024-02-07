@@ -26,24 +26,28 @@
                 align-middle">
                     <thead class="table-light">
                         <tr>
-                            <th>Course name</th>
-                            <th class="w-50">level</th>
+                            <th>School Name</th>
+                                <th>Address</th>
+                                <th>Contact Name</th>
+                                <th>Contact Email</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody class="table-group-divider">
-                        @foreach ($course as $item)
+                        @foreach ($school as $item)
                             <tr class="table-secondary">
                                 <td scope="row">{{ $item->name }}</td>
-                                <td class="text-break">{{ $item->level }}</td>
+                                <td class="text-break">{{ $item->address }}</td>
+                                <td class="text-break">{{ $item->contactName }}</td>
+                                <td class="text-break">{{ $item->contactEmail }}</td>
                                 <td>
                                     <div class="row w-40">
                                         
                                         <div class="col text-center">
-                                            <form action="{{ route('courses.restore', $item) }}" method="POST">
+                                            <form action="{{ route('schools.restore', $item) }}" method="POST">
                                                 @csrf
                                                 @method('PUT')
-                                                <button type="submit" class="btn btn-info">Restore Course</button>
+                                                <button type="submit" class="btn btn-info">Restore School</button>
                                             </form>
                                         </div>   
                                                                          

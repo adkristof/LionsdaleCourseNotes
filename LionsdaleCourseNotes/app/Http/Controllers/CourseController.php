@@ -95,7 +95,7 @@ class CourseController extends Controller
         $this->authorize('restore', Course::class);
 
         $course->restore();
-        return back()->with('message', 'Event was restored successfully.');
+        return back()->with('message', 'Course was restored successfully.');
     }
     public function myindex(Course $courses)
     {

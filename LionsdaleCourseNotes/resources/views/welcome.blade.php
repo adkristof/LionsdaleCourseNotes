@@ -10,11 +10,13 @@
 $courses = \App\Models\Course::all()
 ?>
    <div class="container">
-    <div>
+       <h1 class="welcome rounded-0 text-center">Welcome</h1>
+    <div class="welcome rounded-bottom">
         <div class="row text-center">
+            <h2 class="">Courses</h2>
           @for ($i = 0; $i < 3; $i++)    
               <div class="col-4">
-                  <div class="card bg-dark text-white m-3 p-3">
+                  <div class="card cards m-3 p-3 border-0">
                       <div class="row text-center">
                           <div>
                               <h4 class="card-title">{{ $courses[$i]->name }}</h4>
@@ -28,7 +30,7 @@ $courses = \App\Models\Course::all()
               </div>
           @endfor
           <form action="{{ route('courses.index') }}" method="GET">
-            <button type="submit" class="btn btn-primary">View all</button>
+            <button type="submit" class="btn btn-warning">View all</button>
         </form>
        </div>
     </div>

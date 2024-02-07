@@ -65,12 +65,18 @@
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{route('courses.index')}}">Courses</a>
+                                    <a class="dropdown-item" href="{{route('schools.index')}}">Schools</a>
                                     <a class="dropdown-item" href="{{route('courses.mycourses')}}">MyCourses</a>
+                                    <hr>
                                     @can('create', \App\Models\Course::class)
-                                         <a class="dropdown-item" href="{{ route('courses.create') }}">Create Course</a> 
+                                         <a class="dropdown-item" href="{{ route('courses.create') }}">Create Course</a>
+                                         <a class="dropdown-item" href="{{ route('schools.create') }}">Create School</a> 
+                                         <hr>
                                     @endcan
                                     @can('restore', \App\Models\Course::class)
                                         <a class="dropdown-item" href="{{ route('courses.show_deleted') }}">Deleted Courses</a>
+                                        <a class="dropdown-item" href="{{ route('schools.show_deleted') }}">Deleted Schools</a>
+                                        <hr>
                                     @endcan
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

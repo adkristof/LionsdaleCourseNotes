@@ -37,7 +37,7 @@ $courseuser=$filteredcourseuser->firstWhere("course_id","==",$course->id);
                     <div class="m-3">
                         <label for="question-{{$quiz->id}}" class="form-label">Quistion : {{$quiz->question}}</label>
                         <br/>
-                        <input type="radio" onchange="handleChange({{$quiz->id}},true)" name="question-{{$quiz->id}}" id="question-{{$quiz->id}}-1" value="{{$quiz->answere}}">
+                        <input type="radio" onchange="handleChange({{$quiz->id}},true)" name="question-{{$quiz->id}}" id="question-{{$quiz->id}}-1" value="{{$quiz->answere}}" required>
                         <label for="question-{{$quiz->id}}-1">{{$quiz->answere}}</label>
                         <br/>
                         <input type="radio" onchange="handleChange({{$quiz->id}},false)" name="question-{{$quiz->id}}" id="question-{{$quiz->id}}-2" value="{{$quiz->fakeanswereone}}">

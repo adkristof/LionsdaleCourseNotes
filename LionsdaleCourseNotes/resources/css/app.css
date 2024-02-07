@@ -17,3 +17,11 @@ body {
     object-fit: cover;
     z-index: -100;
 }
+.welcome{
+    background: rgb(1,145,61);
+    background: radial-gradient(circle, rgba(1,145,61,0.8744631641719187) 20%, rgba(15,236,59,0.557936553527661) 69%); 
+}
+.cards{
+    background: rgb(1,145,61);
+    background: linear-gradient(180deg, rgba(1,145,61,1) 0%, rgba(15,236,59,1) 35%, rgba(191,252,41,1) 100%); 
+}
