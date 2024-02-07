@@ -21,7 +21,7 @@ class CourseUserTableFactory extends Factory
             return [
                 'seen'=>$seen,
                 'completed'=>fake()->boolean(),
-                'user_id'=>fake()->numberBetween(1,31),
+                'user_id'=>fake()->numberBetween(1,30),
                 'course_id'=>fake()->numberBetween(1,6),
             ];
         }

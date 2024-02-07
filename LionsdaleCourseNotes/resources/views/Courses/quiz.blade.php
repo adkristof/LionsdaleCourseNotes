@@ -52,7 +52,7 @@ $courseuser=$filteredcourseuser->firstWhere("course_id","==",$course->id);
                     @csrf
                     @method('PUT')
                     <input type="hidden" name="seen" id="seen" value="1">
-                    <input type="hidden" name="completed" id="completed" value="1">
+                    <input type="hidden" name="completed" id="completed" value="0">
                     <button type="submit" class="btn btn-success">Finish</button>
                     </form> 
             </div>

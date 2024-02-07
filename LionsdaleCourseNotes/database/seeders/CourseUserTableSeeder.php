@@ -32,11 +32,6 @@ class CourseUserTableSeeder extends Seeder
             'user_id'=>31,
             'course_id'=>3,
         ]);
-        CourseUserTable::create([
-            'seen'=>false,
-            'completed'=>false,
-            'user_id'=>31,
-            'course_id'=>3,
-        ]);
+        
     }
 }

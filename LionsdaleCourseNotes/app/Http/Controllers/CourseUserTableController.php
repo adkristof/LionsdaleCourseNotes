@@ -61,9 +61,18 @@ class CourseUserTableController extends Controller
     public function update(UpdateCourseUserTableRequest $request, CourseUserTable $courseuser)
     {
         $this->authorize('update', Course::class);
+        
+            $courseuser->update($request->all());
+            if ($courseuser->completed==0) {
+                toastr()->warning('Try again.','Quiz failed'); 
+                return redirect()->route('courses.mycourses')->with('message', 'Failed to complete the course');
+            }
+            else {
+                toastr()->success('Nice take another.','Quiz completed'); 
+                return redirect()->route('courses.index')->with('message', 'Successfully completed the course');
+            }
+        
 
-        $courseuser->update($request->all());
-        return redirect()->route('courses.index')->with('message', 'Successfully completed the course');
     }
 
     /**
